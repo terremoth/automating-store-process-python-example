@@ -26,5 +26,5 @@ Uma tentativa de convencer meu amigo que ele pode automatizar o trabalho tedioso
   - você precisa pegar os 3 produtos que tenham menos quantidades, inserir em 3 celulas específica em uma planilha de excel (xlsx) que você já tem na sua área de trabalho
   - então você precisa multiplicar o preço de cada produto (você já tem/sabe os preços dentro da planilha) pelas quantidades deles e depois multiplicado pelo preço atual do dolar que você precisa olhar todo dia
   - então você precisa gerar um PDF dessa planilha com o dia, mês e ano no nome do relatório, como por exemplo: relatorio-acabando-27-08-2022.pdf
-  - enviar este PDF gerado para seu chefe
+  - enviar por email este PDF gerado para seu chefe
   
