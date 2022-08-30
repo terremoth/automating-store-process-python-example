@@ -12,6 +12,14 @@ An attempt to convince my friend that he can automate his boring work learning p
   - then you need to generate a PDF from this spreadsheet with the day, month and year in the report file name, like: report-running-out-27-08-2022.pdf
   - send this PDF to your boss by email
   
+### Instructions 
+- If you use GMAIL, you will need to create an unique password for only this app to send emails, so:
+    - go to: https://myaccount.google.com/security
+    - now go to the section "How to login to Google"
+    - go to "App Passwords"
+    - from the list to generate, select "other" then click "generate"
+    - this password will be used by you to type/paste when our script asks for it so it can connect to Google and send the email
+
 ---
 
 # [PT-BR] Automatizando coisas com Python - Exemplo

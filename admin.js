@@ -2,10 +2,6 @@ document.addEventListener('DOMContentLoaded', _ => {
     let referrer = document.referrer;
     let loginPage = window.location.origin + '/login.html';
 
-    if (window.location.search === '?error=login') {
-        alert('Logue para poder acessar');
-    }
-
     if (!getCookie('canEnter')) {
         window.location.replace('./login.html?error=login');
     } else {
