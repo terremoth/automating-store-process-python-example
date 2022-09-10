@@ -1,5 +1,6 @@
 from driver import *
 from dollar import *
+from email_sender import send_email_with_attach
 
 from math import nan
 from dotenv import dotenv_values
@@ -8,7 +9,6 @@ import pandas
 import time
 from win32com import client
 from html_to_pdf import convert_html_to_pdf
-
 
 
 config = dotenv_values(".env") 
@@ -102,8 +102,14 @@ df.to_excel(test_name, index = False)
 # wb.ActiveSheet.ExportAsFixedFormat(0, r'.\final.pdf')
 
 
-
-df.to_html("running-out-template.html")
+html_file_name = "{}.html".format(test_name)
+pdf_file_name = "{}.pdf".format(test_name)
+df.to_html(html_file_name)
 time.sleep(1)
 
-convert_html_to_pdf(open("running-out-template.html", "r+b"), "running-out-template.pdf")
+convert_html_to_pdf(open(html_file_name, "r+b"), pdf_file_name)
+
+from_email = config["from_email"]
+to_email = config["to_email"]
+
+send_email_with_attach(from_email, to_email, pdf_file_name)

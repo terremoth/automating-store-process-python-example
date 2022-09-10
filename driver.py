@@ -10,7 +10,7 @@ service = Service(chrome_driver)
 
 # Cria uma variável de opções para mandar para o WebDriver 
 options = webdriver.ChromeOptions() 
-options.add_argument("--headless") # this line makes chrome runs in backend, comment it if you want to see the window opening
+#options.add_argument("--headless") # this line makes chrome runs in backend, comment it if you want to see the window opening
 
 options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certificate-errors')

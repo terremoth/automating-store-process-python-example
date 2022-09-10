@@ -19,6 +19,7 @@ An attempt to convince my friend that he can automate his boring work learning p
     - go to "App Passwords"
     - from the list to generate, select "other" then click "generate"
     - this password will be used by you to type/paste when our script asks for it so it can connect to Google and send the email
+    - With admin rights, in your terminal/cmd, install the requirements on this folder with: ```pip3 install -r requirements.txt``` 
 
 ---
 
