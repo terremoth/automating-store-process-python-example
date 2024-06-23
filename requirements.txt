@@ -12,3 +12,4 @@ BeautifulSoup4
 pywin32
 email-to
 getpass4
+xhtml2pdf
