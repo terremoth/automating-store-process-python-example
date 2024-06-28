@@ -1,20 +1,17 @@
 from driver import *
 from dollar import *
 from email_sender import send_email_with_attach
-
 from math import nan
 from dotenv import dotenv_values
 from selenium.webdriver.common.by import By
 import pandas
 import time
-from win32com import client
 from html_to_pdf import convert_html_to_pdf
 
-
-config = dotenv_values(".env") 
-url = config["url"]
-email = config["email"]
-password = config["password"]
+config = dotenv_values(".env")
+url = config["clothing_store_url"]
+email = config["clothing_store_email"]
+password = config["clothing_store_password"]
 
 # cria o WebDriver e abre o navegador
 driver = webdriver.Chrome(service=service, options=options)
@@ -58,18 +55,15 @@ for row in table.find_elements(By.TAG_NAME, 'tr'):
                 products_list[cell.text] = None
             else:
                 products_list[last_property] = int(cell.text)
-           
 
-sorted_products_by_less_quantity = sorted(products_list.items(), key = lambda item: item[1])
+sorted_products_by_less_quantity = sorted(products_list.items(), key=lambda item: item[1])
 only_three_less_quantity = dict(sorted_products_by_less_quantity[0:3])
-
 
 print(only_three_less_quantity)
 
-
 # import pdfkit
 excel_file_name = 'running-out-template.xlsx'
-df = pandas.read_excel(excel_file_name, header = None)
+df = pandas.read_excel(excel_file_name, header=None)
 
 for index, product in enumerate(only_three_less_quantity):
     df.at[index + 1, 0] = product
@@ -84,23 +78,8 @@ df = df.replace(nan, '', regex=True)
 
 print(df)
 
-
 test_name = "{}_{}".format(int(time.time()), excel_file_name)
-df.to_excel(test_name, index = False)
-
-
-# import win32com.client
-
-# o = win32com.client.Dispatch("Excel.Application")
-
-# o.Visible = False
-
-# wb_path = test_name
-
-# wb = o.Workbooks.Open(r'.\fuck.html')
-# wb.WorkSheets(0).Select()
-# wb.ActiveSheet.ExportAsFixedFormat(0, r'.\final.pdf')
-
+df.to_excel(test_name, index=False)
 
 html_file_name = "{}.html".format(test_name)
 pdf_file_name = "{}.pdf".format(test_name)
@@ -109,7 +88,7 @@ time.sleep(1)
 
 convert_html_to_pdf(open(html_file_name, "r+b"), pdf_file_name)
 
-from_email = config["from_email"]
-to_email = config["to_email"]
+from_email = config["my_work_email"]
+to_email = config["boss_email"]
 
 send_email_with_attach(from_email, to_email, pdf_file_name)
